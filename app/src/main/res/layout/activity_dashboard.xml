@@ -4,27 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.dashboard.DashBoardActivity">
+    tools:context=".ui.activity.dashboard.DashboardActivity">
 
     <include
         android:id="@+id/toolbarLayout"
         layout="@layout/layout_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dashboardRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbarLayout" />
 
     <include
+        android:id="@+id/loadingView"
         layout="@layout/layout_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarLayout" />
+        android:layout_below="@+id/toolbarLayout"
+        android:visibility="gone" />
 
     <include
+        android:id="@+id/emptyView"
         layout="@layout/layout_empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarLayout" />
+        android:layout_below="@+id/toolbarLayout"
+        android:visibility="gone" />
 
 </RelativeLayout>
