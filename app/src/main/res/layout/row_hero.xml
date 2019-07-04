@@ -1,47 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parentLinear"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    android:weightSum="10">
+    android:layout_height="@dimen/common_one_hundred_and_twenty_dp"
+    android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/heroImageView"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_weight="2"
-        android:src="@mipmap/ic_launcher" />
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/parentLinear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_weight="8">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_ten_dp"
+        android:weightSum="2">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/heroName"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/heroImageView"
+            android:layout_width="@dimen/common_ninety_dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="Teeeeest" />
+            android:layout_gravity="top"
+            android:layout_weight="0.3"
+            android:src="@mipmap/ic_launcher" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/heroDescription"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/heroName"
-            android:ellipsize="end"
-            android:maxLines="4"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
-            tools:text="Tegdgdfgtgeeeest" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/common_ten_dp"
+            android:layout_weight="1.7">
 
-    </RelativeLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/heroName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/common_text_sixteen_sp"
+                android:textStyle="bold"
+                tools:text="Teeeeest" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/heroDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/heroName"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/common_text_twelve_sp"
+                tools:text="Tegdgdfgtgeeeest" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_one_dp"
+        android:layout_marginTop="@dimen/common_four_dp"
+        android:background="@android:color/darker_gray" />
+
 </LinearLayout>

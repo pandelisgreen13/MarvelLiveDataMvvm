@@ -11,7 +11,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row_hero.*
 import kotlinx.android.synthetic.main.row_hero.view.*
 
-class DashboardRecyclerViewAdapter(private  val heroList: MutableList<MarvelHero>) : RecyclerView.Adapter<DashboardRecyclerViewAdapter.ItemViewHolder>() {
+class DashboardRecyclerViewAdapter(private val heroList: MutableList<MarvelHero>) : RecyclerView.Adapter<DashboardRecyclerViewAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_hero, parent, false))
