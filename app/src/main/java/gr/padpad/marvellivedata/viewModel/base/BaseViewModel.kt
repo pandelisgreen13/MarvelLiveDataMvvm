@@ -14,6 +14,12 @@ open class BaseViewModel :ViewModel() , CoroutineScope {
     protected lateinit var isLoading: MutableLiveData<Boolean>
     protected lateinit var showError: MutableLiveData<Boolean>
 
+    /**
+     * This is the job for all coroutines started by this ViewModel.
+     *
+     * Cancelling this job will cancel all coroutines started by this ViewModel.
+     */
+
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + viewModelJob
 
@@ -31,7 +37,6 @@ open class BaseViewModel :ViewModel() , CoroutineScope {
         }
         return isLoading
     }
-
 
     override fun onCleared() {
         super.onCleared()

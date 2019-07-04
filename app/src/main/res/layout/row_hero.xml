@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/common_one_hundred_and_twenty_dp"
+    android:layout_height="@dimen/common_one_hundred_dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/heroName"
                 android:ellipsize="end"
-                android:maxLines="4"
+                android:maxLines="3"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/common_text_twelve_sp"
                 tools:text="Tegdgdfgtgeeeest" />

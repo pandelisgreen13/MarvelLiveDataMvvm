@@ -10,37 +10,27 @@ import timber.log.Timber
 
 class DashboardViewModel : BaseViewModel() {
 
-    /**
-     * This is the job for all coroutines started by this ViewModel.
-     *
-     * Cancelling this job will cancel all coroutines started by this ViewModel.
-     */
-
     private lateinit var heroes: MutableLiveData<List<MarvelHero>>
 
     fun getHeroes(): LiveData<List<MarvelHero>> {
         if (!::heroes.isInitialized) {
             heroes = MutableLiveData()
-            loadHeroes()
-        }
-        return heroes
-    }
-
-    private fun loadHeroes() {
-        launch {
-            try {
-                isLoading.value = true
-                val result = MarvelApplication.get()?.marvelClient?.getMarvelHeroesAsync(20, 0)
-                result?.await()?.let {
-                    showError.value = false
-                    heroes.value = it.heroData.results
+            launch {
+                try {
+                    isLoading.value = true
+                    val result = MarvelApplication.get()?.marvelClient?.getMarvelHeroesAsync(20, 0)
+                    result?.await()?.let {
+                        showError.value = false
+                        heroes.value = it.heroData.results
+                    }
+                } catch (e: Exception) {
+                    Timber.e(e.toString())
+                    showError.value = true
+                } finally {
+                    isLoading.value = false
                 }
-            } catch (e: Exception) {
-                Timber.e(e.toString())
-                showError.value = true
-            } finally {
-                isLoading.value = false
             }
         }
+        return heroes
     }
 }
