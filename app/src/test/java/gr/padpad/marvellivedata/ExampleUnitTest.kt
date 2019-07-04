@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedatamvvm
+package gr.padpad.marvellivedata
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedatamvvm
+package gr.padpad.marvellivedata
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
