@@ -14,7 +14,7 @@
 
         <activity android:name="gr.padpad.marvellivedata.ui.activity.dashboard.DashBoardActivity"/>
         <activity android:name="gr.padpad.marvellivedata.ui.activity.splash.SplashActivity"
-            android:theme="@style/Launcher">
+            android:theme="@style/LauncherTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

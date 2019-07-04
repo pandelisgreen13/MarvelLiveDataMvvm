@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MarvelLiveData</string>
+    <string name="no_data">Δεν βρέθηκαν αποτελέσματα</string>
+    <string name="dashboard_toolbar_title">Marvel Heroes</string>
 </resources>
