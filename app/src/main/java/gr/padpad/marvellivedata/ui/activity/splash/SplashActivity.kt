@@ -19,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
     private fun initLayout() {
         Handler().postDelayed({
             startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
         }, 2000)
     }
 

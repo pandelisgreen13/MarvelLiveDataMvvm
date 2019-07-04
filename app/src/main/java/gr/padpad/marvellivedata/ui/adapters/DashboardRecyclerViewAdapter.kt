@@ -17,15 +17,15 @@ class DashboardRecyclerViewAdapter(private val heroList: MutableList<MarvelHero>
         return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_hero, parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return heroList.size
-    }
-
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val hero = heroList[position]
         holder.heroName.text = hero.name
         holder.heroDescription.text = hero.description
         Picasso.get().load(hero.thumbnail.path + "." + hero.thumbnail.extension).into(holder.heroImageView.heroImageView)
+    }
+
+    override fun getItemCount(): Int {
+        return heroList.size
     }
 
     class ItemViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer
