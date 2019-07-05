@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import gr.padpad.marvellivedata.R
-import gr.padpad.marvellivedata.models.response.marvel.hero.MarvelHero
+import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHero
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row_hero.*
 import kotlinx.android.synthetic.main.row_hero.view.*

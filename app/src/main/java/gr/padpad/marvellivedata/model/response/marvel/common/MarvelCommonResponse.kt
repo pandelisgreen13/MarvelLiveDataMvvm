@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedata.models.response.marvel.common
+package gr.padpad.marvellivedata.model.response.marvel.common
 
 import com.google.gson.annotations.SerializedName
 import gr.mobile.mvp.kotlin.network.parser.response.marvel.common.IMarvelCommonResponse

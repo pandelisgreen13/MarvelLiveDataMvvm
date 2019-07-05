@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedata.mvp.repository.dashobard.repository.base
+package gr.padpad.marvellivedata.mvp.repository.base
 
 open class BaseRepository  {
 

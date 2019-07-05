@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedata.models.response.commor
+package gr.padpad.marvellivedata.model.response.commor
 
 interface IResponse {
     fun isSuccess(): Boolean

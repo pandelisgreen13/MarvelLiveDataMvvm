@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedata.models.response.commor.error
+package gr.padpad.marvellivedata.model.response.commor.error
 
 import com.google.gson.annotations.SerializedName
 

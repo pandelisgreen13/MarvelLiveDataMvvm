@@ -1,13 +1,11 @@
 package gr.padpad.marvellivedata.network.client
 
-import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import gr.padpad.marvellivedata.commons.Definitions
 import gr.padpad.marvellivedata.commons.DefinitionsApi
-import gr.padpad.marvellivedata.models.response.marvel.hero.MarvelHeroResponse
+import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHeroResponse
 import gr.padpad.marvellivedata.network.api.MarvelApi
 import kotlinx.coroutines.Deferred
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

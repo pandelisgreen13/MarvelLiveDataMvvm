@@ -1,7 +1,6 @@
-package gr.padpad.marvellivedata.models.response.marvel.hero
+package gr.padpad.marvellivedata.model.response.marvel.hero
 
 import com.google.gson.annotations.SerializedName
-import gr.padpad.marvellivedata.models.response.marvel.hero.MarvelHero
 
 data class MarvelHeroData(
         @SerializedName("offset") val offset: Int,

@@ -1,7 +1,7 @@
-package gr.padpad.marvellivedata.models.response.marvel.hero
+package gr.padpad.marvellivedata.model.response.marvel.hero
 
 import com.google.gson.annotations.SerializedName
-import gr.padpad.marvellivedata.models.response.marvel.common.MarvelThumbnail
+import gr.padpad.marvellivedata.model.response.marvel.common.MarvelThumbnail
 
 data class MarvelHero(
         @SerializedName("id") val id: Int,

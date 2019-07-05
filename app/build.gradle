@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -37,7 +36,7 @@ dependencies {
     implementation "com.afollestad.material-dialogs:core:2.8.0"
 
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation "com.squareup.retrofit2:retrofit:2.5.0"
@@ -46,6 +45,10 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "uk.co.chrisjenx:calligraphy:2.3.0"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    // Room components
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
