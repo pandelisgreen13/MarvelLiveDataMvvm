@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedata.viewModel
+package gr.padpad.marvellivedata.mvp.viewModel.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

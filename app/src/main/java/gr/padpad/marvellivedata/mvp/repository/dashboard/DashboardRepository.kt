@@ -1,8 +1,8 @@
-package gr.padpad.marvellivedata.viewModel
+package gr.padpad.marvellivedata.mvp.repository.dashobard
 
 import gr.padpad.marvellivedata.models.response.marvel.hero.MarvelHeroResponse
 import gr.padpad.marvellivedata.network.client.MarvelClient
-import gr.padpad.marvellivedata.viewModel.base.BaseRepository
+import gr.padpad.marvellivedata.mvp.repository.dashobard.repository.base.BaseRepository
 
 class DashboardRepository(private val marvelClient: MarvelClient?) : BaseRepository() {
 

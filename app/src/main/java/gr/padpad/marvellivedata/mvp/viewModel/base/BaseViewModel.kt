@@ -1,4 +1,4 @@
-package gr.padpad.marvellivedata.viewModel.base
+package gr.padpad.marvellivedata.mvp.viewModel.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

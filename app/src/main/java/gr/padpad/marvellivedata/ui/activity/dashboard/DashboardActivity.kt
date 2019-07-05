@@ -9,8 +9,8 @@ import gr.padpad.marvellivedata.R
 import gr.padpad.marvellivedata.commons.application.MarvelApplication
 import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
 import gr.padpad.marvellivedata.ui.adapters.DashboardRecyclerViewAdapter
-import gr.padpad.marvellivedata.viewModel.DashboardViewModel
-import gr.padpad.marvellivedata.viewModel.DashboardViewModelFactory
+import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModel
+import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModelFactory
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 

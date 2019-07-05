@@ -1,10 +1,11 @@
-package gr.padpad.marvellivedata.viewModel
+package gr.padpad.marvellivedata.mvp.viewModel.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import gr.padpad.marvellivedata.models.response.marvel.hero.MarvelHero
 import gr.padpad.marvellivedata.network.client.MarvelClient
-import gr.padpad.marvellivedata.viewModel.base.BaseViewModel
+import gr.padpad.marvellivedata.mvp.repository.dashobard.DashboardRepository
+import gr.padpad.marvellivedata.mvp.viewModel.base.BaseViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
