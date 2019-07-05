@@ -50,6 +50,8 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
 
+    testImplementation 'org.robolectric:robolectric:4.1'
+    testImplementation 'org.mockito:mockito-core:2.23.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
