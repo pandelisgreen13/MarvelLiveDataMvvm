@@ -7,6 +7,7 @@ import gr.padpad.marvellivedata.network.client.MarvelClient
 
 class DashboardViewModelFactory(private val marvelClient: MarvelClient?) : ViewModelProvider.Factory{
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return DashboardViewModel(marvelClient) as T
     }

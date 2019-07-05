@@ -3,6 +3,7 @@ package gr.padpad.marvellivedata.viewModel.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -11,6 +12,7 @@ import kotlin.coroutines.CoroutineContext
 open class BaseViewModel :ViewModel() , CoroutineScope {
 
     private val viewModelJob = Job()
+    protected val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     protected lateinit var isLoading: MutableLiveData<Boolean>
     protected lateinit var showError: MutableLiveData<Boolean>
 
@@ -37,6 +39,10 @@ open class BaseViewModel :ViewModel() , CoroutineScope {
         }
         return isLoading
     }
+
+    /**
+     * Cancel all coroutines when the ViewModel is cleared
+     */
 
     override fun onCleared() {
         super.onCleared()
