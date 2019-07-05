@@ -6,7 +6,7 @@ import gr.padpad.marvellivedata.viewModel.base.BaseRepository
 
 class DashboardRepository(private val marvelClient: MarvelClient?) : BaseRepository() {
 
-    suspend fun getHeroes(): MarvelHeroResponse? {
+    suspend fun fetchHeroes(): MarvelHeroResponse? {
         return try {
             marvelClient?.getMarvelHeroesAsync(20, 0)?.await()
         } catch (e: Exception) {

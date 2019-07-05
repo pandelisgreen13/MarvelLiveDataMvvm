@@ -3,16 +3,14 @@ package gr.padpad.marvellivedata.viewModel.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-open class BaseViewModel :ViewModel() , CoroutineScope {
+open class BaseViewModel : ViewModel(), CoroutineScope {
 
-    private val viewModelJob = Job()
+    private val viewModelJob = SupervisorJob()
     protected val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
+    protected val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     protected lateinit var isLoading: MutableLiveData<Boolean>
     protected lateinit var showError: MutableLiveData<Boolean>
 

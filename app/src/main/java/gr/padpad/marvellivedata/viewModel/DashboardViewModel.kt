@@ -9,32 +9,36 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-class DashboardViewModel(private val marvelClient: MarvelClient?) : BaseViewModel() {
+class DashboardViewModel(marvelClient: MarvelClient?) : BaseViewModel() {
 
     private lateinit var heroes: MutableLiveData<List<MarvelHero>>
     private var dashboardRepository = DashboardRepository(marvelClient)
 
     fun getHeroes(): LiveData<List<MarvelHero>> {
         if (!::heroes.isInitialized) {
-            heroes = MutableLiveData()
-            launch {
-                try {
-                    isLoading.value = true
-                    val response = withContext(bgDispatcher) { dashboardRepository.getHeroes() }
-                    response?.let {
-                        showError.value = false
-                        heroes.value = it.heroData.results
-                    } ?: run {
-                        showError.value = true
-                    }
-                } catch (e: Exception) {
-                    Timber.e(e.toString())
-                    showError.value = true
-                } finally {
-                    isLoading.value = false
-                }
-            }
+            loadHeroes()
         }
         return heroes
+    }
+
+    private fun loadHeroes() {
+        heroes = MutableLiveData()
+        uiScope.launch {
+            try {
+                isLoading.value = true
+                val response = withContext(bgDispatcher) { dashboardRepository.fetchHeroes() }
+                response?.heroData?.let {
+                    showError.value = false
+                    heroes.value = it.results
+                } ?: run {
+                    showError.value = true
+                }
+            } catch (e: Exception) {
+                Timber.e(e.toString())
+                showError.value = true
+            } finally {
+                isLoading.value = false
+            }
+        }
     }
 }
