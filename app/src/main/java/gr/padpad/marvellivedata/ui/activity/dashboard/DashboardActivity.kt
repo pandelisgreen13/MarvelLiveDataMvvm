@@ -30,8 +30,7 @@ class DashboardActivity : BaseActivity<DashboardViewModel>() {
 
     private fun initViewModel() {
         val dashboardViewModelFactory = BaseViewModelFactory {
-            DashboardViewModel(DashboardRepository(MarvelApplication.get()?.marvelClient,
-                    MarvelDatabase.get(this)))
+            DashboardViewModel(DashboardRepository(MarvelApplication.get()?.marvelClient, MarvelDatabase.get(this)))
         }
         /**
          * ViewModelProviders , keeping the ViewModel alive and paired with the scope:
@@ -42,7 +41,9 @@ class DashboardActivity : BaseActivity<DashboardViewModel>() {
             heroes?.let {
                 dashboardRecyclerView.layoutManager = LinearLayoutManager(this)
                 dashboardRecyclerView.adapter = DashboardRecyclerViewAdapter(it.toMutableList(),
-                        onFavouriteClicked = { heroId -> viewModel?.updateFavourite(heroId) },
+                        onFavouriteClicked = { heroId ->
+                            viewModel?.updateFavourite(heroId)
+                        },
                         onHeroClicked = { hero ->
                             val intent = Intent(this, HeroDetailsActivity::class.java)
                             intent.putExtra(BUNDLE.HERO_DETAILS, hero)
