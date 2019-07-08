@@ -2,6 +2,7 @@ package gr.padpad.marvellivedata.mvp.viewModel.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import gr.padpad.marvellivedata.model.data.MarvelHeroesModel
 import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHero
 import gr.padpad.marvellivedata.network.client.MarvelClient
 import gr.padpad.marvellivedata.mvp.repository.dashboard.DashboardRepository
@@ -12,9 +13,9 @@ import timber.log.Timber
 
 class DashboardViewModel(private val dashboardRepository: DashboardRepository?) : BaseViewModel() {
 
-    private lateinit var heroes: MutableLiveData<List<MarvelHero>>
+    private lateinit var heroes: MutableLiveData<List<MarvelHeroesModel>>
 
-    fun getHeroes(): LiveData<List<MarvelHero>> {
+    fun getHeroes(): LiveData<List<MarvelHeroesModel>> {
         if (!::heroes.isInitialized) {
             loadHeroes()
         }
@@ -27,9 +28,9 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository?) 
             try {
                 isLoading.value = true
                 val response = withContext(bgDispatcher) { dashboardRepository?.fetchHeroes() }
-                response?.heroData?.let {
+                response?.let {
                     showError.value = false
-                    heroes.value = it.results
+                    heroes.value = it.marvelHeroes
                 } ?: run {
                     showError.value = true
                 }

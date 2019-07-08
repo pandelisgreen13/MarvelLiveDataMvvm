@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import gr.padpad.marvellivedata.R
 import gr.padpad.marvellivedata.commons.application.MarvelApplication
+import gr.padpad.marvellivedata.database.MarvelDatabase
 import gr.padpad.marvellivedata.mvp.repository.dashboard.DashboardRepository
 import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
 import gr.padpad.marvellivedata.ui.adapters.DashboardRecyclerViewAdapter
@@ -25,7 +26,10 @@ class DashboardActivity : BaseActivity() {
     }
 
     private fun initViewModel() {
-        val dashboardViewModelFactory = DashboardViewModelFactory(DashboardRepository(MarvelApplication.get()?.marvelClient))
+        val dashboardViewModelFactory = DashboardViewModelFactory(DashboardRepository(MarvelApplication.get()?.marvelClient, MarvelDatabase.get(this)))
+        /**
+         * ViewModelProviders , keeping the ViewModel alive and paired with the scope:
+         */
         val viewModel = ViewModelProviders.of(this, dashboardViewModelFactory).get(DashboardViewModel::class.java)
         viewModel.getHeroes().observe(this, Observer { heroes ->
             // update UI
