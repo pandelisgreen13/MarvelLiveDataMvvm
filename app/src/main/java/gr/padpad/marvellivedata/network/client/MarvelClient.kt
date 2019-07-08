@@ -35,9 +35,7 @@ class MarvelClient {
 
     private fun getOkHttpClient() = OkHttpClient().newBuilder()
             .addInterceptor { chain ->
-
                 val currentTimestamp = System.currentTimeMillis()
-
                 val newUrl = chain.request().url()
                         .newBuilder()
                         .addQueryParameter("ts", currentTimestamp.toString())
@@ -52,7 +50,6 @@ class MarvelClient {
                         .newBuilder()
                         .url(newUrl)
                         .build()
-
                 chain.proceed(newRequest)
             }
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))

@@ -29,7 +29,10 @@ class DashboardActivity : BaseActivity<DashboardViewModel>() {
     }
 
     private fun initViewModel() {
-        val dashboardViewModelFactory = BaseViewModelFactory { DashboardViewModel(DashboardRepository(MarvelApplication.get()?.marvelClient, MarvelDatabase.get(this))) }
+        val dashboardViewModelFactory = BaseViewModelFactory {
+            DashboardViewModel(DashboardRepository(MarvelApplication.get()?.marvelClient,
+                    MarvelDatabase.get(this)))
+        }
         /**
          * ViewModelProviders , keeping the ViewModel alive and paired with the scope:
          */
