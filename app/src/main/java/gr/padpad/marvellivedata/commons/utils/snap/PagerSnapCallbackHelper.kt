@@ -56,7 +56,7 @@ class PagerSnapCallbackHelper : PagerSnapHelper() {
                         return
                     }
 
-                    this@PagerSnapCallbackHelper.onSnapFinishCallback!!.onSnapFinished(visibleItem)
+                    this@PagerSnapCallbackHelper.onSnapFinishCallback.onSnapFinished(visibleItem)
                 }
             }
         })
