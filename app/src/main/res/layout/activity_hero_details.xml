@@ -19,9 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_ten_dp"
-            android:layout_marginBottom="@dimen/common_six_dp"
-            android:orientation="horizontal"
-            android:padding="@dimen/common_ten_dp">
+            android:layout_marginBottom="@dimen/common_ten_dp"
+            android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/heroCardView"
@@ -29,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/common_one_dp"
                 android:foreground="?attr/selectableItemBackground"
+                android:padding="@dimen/common_ten_dp"
                 app:cardCornerRadius="@dimen/common_eight_dp"
                 app:cardElevation="@dimen/common_eight_dp"
                 app:cardPreventCornerOverlap="true"
@@ -80,17 +80,14 @@
                             android:textSize="@dimen/common_text_fourteen_sp"
                             tools:text="IRON MAN " />
                     </LinearLayout>
-
                 </RelativeLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/heroDetailsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/heroCardView"
-                android:paddingTop="@dimen/common_ten_dp" />
+                android:layout_below="@+id/heroCardView" />
         </RelativeLayout>
 
     </ScrollView>

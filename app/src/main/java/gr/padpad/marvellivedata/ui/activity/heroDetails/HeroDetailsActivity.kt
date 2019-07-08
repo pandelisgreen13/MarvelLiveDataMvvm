@@ -10,6 +10,8 @@ import com.squareup.picasso.Picasso
 import gr.padpad.marvellivedata.R
 import gr.padpad.marvellivedata.commons.BUNDLE
 import gr.padpad.marvellivedata.commons.application.MarvelApplication
+import gr.padpad.marvellivedata.commons.extentions.getScreenWidth
+import gr.padpad.marvellivedata.commons.utils.snap.PagerSnapCallbackHelper
 import gr.padpad.marvellivedata.model.data.MarvelHeroesModel
 import gr.padpad.marvellivedata.mvp.repository.heroDetails.HeroDetailsRepository
 import gr.padpad.marvellivedata.mvp.viewModel.heroDetails.HeroDetailsViewModel
@@ -46,7 +48,10 @@ class HeroDetailsActivity : AppCompatActivity() {
             heroes?.let {
                 heroDetailsRecyclerView.setHasFixedSize(true)
                 heroDetailsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-                heroDetailsRecyclerView.adapter = HeroDetailsRecyclerViewAdapter(it.toMutableList())
+                heroDetailsRecyclerView.adapter = HeroDetailsRecyclerViewAdapter(it.toMutableList(), (getScreenWidth(this) * 0.85).toInt())
+
+                val pagerSnapCallbackHelper = PagerSnapCallbackHelper()
+                pagerSnapCallbackHelper.attachToRecyclerView(heroDetailsRecyclerView)
             } ?: run { emptyView.visibility = View.VISIBLE }
         })
 

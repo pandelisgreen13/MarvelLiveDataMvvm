@@ -12,10 +12,10 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row_hero.*
 import kotlinx.android.synthetic.main.row_hero.view.*
 
-class HeroDetailsRecyclerViewAdapter(private val heroList: MutableList<MarvelHeroesModel>) : RecyclerView.Adapter<HeroDetailsRecyclerViewAdapter.ItemViewHolder>() {
+class HeroDetailsRecyclerViewAdapter(private val heroList: MutableList<MarvelHeroesModel>, private val rowWidth: Int) : RecyclerView.Adapter<HeroDetailsRecyclerViewAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_hero_details, parent, false))
+        return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_hero_details, parent, false),rowWidth)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -36,7 +36,11 @@ class HeroDetailsRecyclerViewAdapter(private val heroList: MutableList<MarvelHer
         return heroList.size
     }
 
-    class ItemViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer
+    class ItemViewHolder(override val containerView: View, rowWidth: Int) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+        init {
+            itemView.layoutParams.width = rowWidth
+        }
+    }
 }
 
 
