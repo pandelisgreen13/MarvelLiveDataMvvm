@@ -1,61 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="@dimen/common_one_dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/common_four_dp"
+    android:paddingEnd="@dimen/common_four_dp"
+    android:paddingBottom="@dimen/common_six_dp"
+    app:cardCornerRadius="@dimen/common_eight_dp"
+    app:cardElevation="@dimen/common_eight_dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
-        android:id="@+id/parentLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/common_ten_dp"
-        android:weightSum="2">
+        android:background="@color/red_light"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/heroImageView"
-            android:layout_width="@dimen/common_ninety_dp"
-            android:layout_height="@dimen/common_eighty_dp"
-            android:layout_gravity="top"
-            android:layout_weight="0.3"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/parentLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/common_ten_dp"
-            android:layout_weight="1.7">
+            android:orientation="horizontal"
+            android:padding="@dimen/common_ten_dp"
+            android:weightSum="2">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/heroName"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/heroImageView"
+                android:layout_width="@dimen/common_ninety_dp"
+                android:layout_height="@dimen/common_eighty_dp"
+                android:layout_gravity="top"
+                android:layout_weight="0.3"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/common_text_sixteen_sp"
-                android:textStyle="bold"
-                tools:text="Teeeeest" />
+                android:layout_marginStart="@dimen/common_ten_dp"
+                android:layout_weight="1.7">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/heroDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/heroName"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="@dimen/common_text_twelve_sp"
-                tools:text="Tegdgdfgtgeeeest" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/heroName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toStartOf="@+id/favouriteButton"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/common_text_sixteen_sp"
+                    android:textStyle="bold"
+                    tools:text="Teeeeest" />
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/heroDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/heroName"
+                    android:layout_toStartOf="@+id/favouriteButton"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/common_text_twelve_sp"
+                    tools:text="Tegdgdfgtgeeeest" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/favouriteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/heroDescription"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/common_four_dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/common_four_dp"
+                    android:src="@drawable/drawable_favourite_selector" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_one_dp"
+            android:layout_marginTop="@dimen/common_four_dp"
+            android:background="@android:color/darker_gray" />
+
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/common_one_dp"
-        android:layout_marginTop="@dimen/common_four_dp"
-        android:background="@android:color/darker_gray" />
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

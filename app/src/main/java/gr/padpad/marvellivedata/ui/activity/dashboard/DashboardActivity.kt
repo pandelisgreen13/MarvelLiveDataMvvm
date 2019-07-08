@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class DashboardActivity : BaseActivity() {
 
+    private lateinit var viewModel: DashboardViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -30,12 +32,14 @@ class DashboardActivity : BaseActivity() {
         /**
          * ViewModelProviders , keeping the ViewModel alive and paired with the scope:
          */
-        val viewModel = ViewModelProviders.of(this, dashboardViewModelFactory).get(DashboardViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, dashboardViewModelFactory).get(DashboardViewModel::class.java)
         viewModel.getHeroes().observe(this, Observer { heroes ->
             // update UI
             heroes?.let {
                 dashboardRecyclerView.layoutManager = LinearLayoutManager(this)
-                dashboardRecyclerView.adapter = DashboardRecyclerViewAdapter(it.toMutableList())
+                dashboardRecyclerView.adapter = DashboardRecyclerViewAdapter(it.toMutableList()) { heroId ->
+                    viewModel.updateFavourite(heroId)
+                }
             }
         })
 

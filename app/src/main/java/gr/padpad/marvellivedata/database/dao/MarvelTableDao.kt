@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface MarvelTableDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertHero(marvelTable:  MarvelTable)
 
     @Query("DELETE FROM MarvelTable")
@@ -19,4 +19,7 @@ interface MarvelTableDao {
 
     @Query("UPDATE MarvelTable SET isFavourite = NOT isFavourite WHERE id =:heroId")
     fun updateFavorite(heroId: Int)
+
+    @Query("select * from MarvelTable")
+    fun loadHeroes(): List<MarvelTable>
 }

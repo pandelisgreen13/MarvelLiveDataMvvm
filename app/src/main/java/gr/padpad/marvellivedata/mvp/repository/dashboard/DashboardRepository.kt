@@ -4,9 +4,9 @@ import gr.padpad.marvellivedata.database.MarvelDatabase
 import gr.padpad.marvellivedata.database.dao.MarvelTable
 import gr.padpad.marvellivedata.model.data.MarvelHeroesModel
 import gr.padpad.marvellivedata.model.data.MarvelListModel
-import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHeroResponse
-import gr.padpad.marvellivedata.network.client.MarvelClient
 import gr.padpad.marvellivedata.mvp.repository.base.BaseRepository
+import gr.padpad.marvellivedata.network.client.MarvelClient
+import timber.log.Timber
 
 class DashboardRepository(private val marvelClient: MarvelClient?, private val marvelDatabase: MarvelDatabase) : BaseRepository() {
 
@@ -14,11 +14,11 @@ class DashboardRepository(private val marvelClient: MarvelClient?, private val m
         val response = try {
             marvelClient?.getMarvelHeroesAsync(20, 0)?.await()
         } catch (e: Exception) {
-           return null
+            return null
         }
 
         val marvelModelList = ArrayList(response?.heroData?.results?.map { marvelHero ->
-            marvelDatabase.marvelDao().insertHero(MarvelTable(marvelHero.id))
+            marvelDatabase.marvelDao().insertHero(MarvelTable(marvelHero.id, false))
 
             return@map MarvelHeroesModel(
                     marvelHero.id,
@@ -29,7 +29,10 @@ class DashboardRepository(private val marvelClient: MarvelClient?, private val m
             )
         })
         return MarvelListModel(marvelModelList)
+    }
 
-
+    fun updateFavourite(marvelHeroId: Int) {
+        Timber.d("Hero Favorite Clicked %s", marvelHeroId)
+        marvelDatabase.marvelDao().updateFavorite(marvelHeroId)
     }
 }

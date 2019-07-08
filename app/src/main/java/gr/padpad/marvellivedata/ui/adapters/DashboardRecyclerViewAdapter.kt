@@ -12,7 +12,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row_hero.*
 import kotlinx.android.synthetic.main.row_hero.view.*
 
-class DashboardRecyclerViewAdapter(private val heroList: MutableList<MarvelHeroesModel>) : RecyclerView.Adapter<DashboardRecyclerViewAdapter.ItemViewHolder>() {
+class DashboardRecyclerViewAdapter(private val heroList: MutableList<MarvelHeroesModel>, private val onFavouriteClicked: (Int) -> Unit) : RecyclerView.Adapter<DashboardRecyclerViewAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_hero, parent, false))
@@ -22,6 +22,13 @@ class DashboardRecyclerViewAdapter(private val heroList: MutableList<MarvelHeroe
         val hero = heroList[position]
         holder.heroName.text = hero.name
         holder.heroDescription.text = handleDescription(hero.description, holder.itemView.context)
+        holder.favouriteButton.isSelected = hero.isFavorite
+        holder.favouriteButton.setOnClickListener {
+            onFavouriteClicked(hero.id)
+            hero.isFavorite = !hero.isFavorite
+            it.isSelected = hero.isFavorite
+            notifyItemChanged(position)
+        }
         Picasso.get().load(hero.thumbnail).into(holder.heroImageView.heroImageView)
     }
 

@@ -22,6 +22,20 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository?) 
         return heroes
     }
 
+    fun updateFavourite(heroId: Int) {
+        uiScope.launch {
+            isLoading.value = true
+            try {
+                withContext(bgDispatcher) { dashboardRepository?.updateFavourite(heroId) }
+            } catch (e: Exception) {
+                Timber.e(e.toString())
+                showError.value = true
+            } finally {
+                isLoading.value = false
+            }
+        }
+    }
+
     private fun loadHeroes() {
         heroes = MutableLiveData()
         uiScope.launch {

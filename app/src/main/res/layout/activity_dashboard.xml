@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.activity.dashboard.DashboardActivity">
 
     <include
@@ -14,7 +15,8 @@
         android:id="@+id/dashboardRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarLayout" />
+        android:layout_below="@+id/toolbarLayout"
+        android:paddingTop="@dimen/common_ten_dp" />
 
     <include
         android:id="@+id/loadingView"
