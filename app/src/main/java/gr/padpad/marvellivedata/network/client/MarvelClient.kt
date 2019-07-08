@@ -3,6 +3,7 @@ package gr.padpad.marvellivedata.network.client
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import gr.padpad.marvellivedata.commons.Definitions
 import gr.padpad.marvellivedata.commons.DefinitionsApi
+import gr.padpad.marvellivedata.model.response.marvel.comics.MarvelComicsResponse
 import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHeroResponse
 import gr.padpad.marvellivedata.network.api.MarvelApi
 import kotlinx.coroutines.Deferred
@@ -81,6 +82,10 @@ class MarvelClient {
 
     fun getMarvelHeroesAsync(limit: Int, offset: Int): Deferred<MarvelHeroResponse> {
         return marvelApi.getMarvelHeroesAsync(limit, offset)
+    }
+
+    fun getMarvelComicsAsync(heroId: Int): Deferred<MarvelComicsResponse> {
+        return marvelApi.getMarvelComicsAsync(heroId)
     }
 
 }

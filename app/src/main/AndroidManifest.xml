@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gr.padpad.marvellivedata">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".commons.application.MarvelApplication"
         android:allowBackup="true"
@@ -15,8 +15,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="gr.padpad.marvellivedata.ui.activity.dashboard.DashboardActivity"/>
-        <activity android:name="gr.padpad.marvellivedata.ui.activity.splash.SplashActivity"
+        <activity android:name=".ui.activity.heroDetails.HeroDetailsActivity" />
+        <activity android:name=".ui.activity.dashboard.DashboardActivity" />
+
+        <activity
+            android:name=".ui.activity.splash.SplashActivity"
             android:theme="@style/LauncherTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

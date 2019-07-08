@@ -9,3 +9,8 @@ object Definitions {
     const val PARAM_LIMIT                                                               = "limit"
     const val PARAM_CHARACTER_ID                                                        = "characterId"
 }
+
+object BUNDLE{
+
+    const val HERO_DETAILS                                                              = "heroDetails"
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.heroDetails.HeroDetailsActivity">
+
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarLayout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_ten_dp"
+            android:layout_marginBottom="@dimen/common_six_dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_ten_dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/heroCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_one_dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="@dimen/common_eight_dp"
+                app:cardElevation="@dimen/common_eight_dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/red"
+                    android:padding="@dimen/common_five_dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/heroImageView"
+                        android:layout_width="@dimen/common_eighty_dp"
+                        android:layout_height="@dimen/common_ninety_dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <LinearLayout
+                        android:id="@+id/detailsLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/common_ten_dp"
+                        android:layout_toEndOf="@+id/heroImageView"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/heroTitleTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/common_ten_dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_text_sixteen_sp"
+                            android:textStyle="bold"
+                            tools:text="IRON MAN" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/heroDescriptionTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/common_ten_dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_text_fourteen_sp"
+                            tools:text="IRON MAN " />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/heroDetailsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/heroCardView"
+                android:paddingTop="@dimen/common_ten_dp" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/loadingView"
+        layout="@layout/layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarLayout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/emptyView"
+        layout="@layout/layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarLayout"
+        android:visibility="gone" />
+
+</RelativeLayout>

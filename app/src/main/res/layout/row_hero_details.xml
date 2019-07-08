@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/common_one_dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/common_four_dp"
+    android:paddingEnd="@dimen/common_four_dp"
+    android:paddingBottom="@dimen/common_six_dp"
+    app:cardCornerRadius="@dimen/common_eight_dp"
+    app:cardElevation="@dimen/common_eight_dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/heroImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/common_ten_dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:id="@+id/parentLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/common_ten_dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/heroName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/common_text_sixteen_sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform"
+                tools:text="Teeeeest" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_one_dp"
+                android:layout_marginTop="@dimen/common_two_dp"
+                android:layout_marginBottom="@dimen/common_two_dp"
+                android:background="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/heroDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/common_text_twelve_sp"
+                tools:text="Tegdgdfgtgeeeest" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_one_dp"
+            android:layout_marginTop="@dimen/common_four_dp"
+            android:background="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

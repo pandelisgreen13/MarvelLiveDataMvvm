@@ -1,18 +1,21 @@
 package gr.padpad.marvellivedata.ui.activity.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import gr.padpad.marvellivedata.R
+import gr.padpad.marvellivedata.commons.BUNDLE
 import gr.padpad.marvellivedata.commons.application.MarvelApplication
 import gr.padpad.marvellivedata.database.MarvelDatabase
 import gr.padpad.marvellivedata.mvp.repository.dashboard.DashboardRepository
-import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
-import gr.padpad.marvellivedata.ui.adapters.DashboardRecyclerViewAdapter
 import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModel
+import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
+import gr.padpad.marvellivedata.ui.adapters.dashboard.DashboardRecyclerViewAdapter
 import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModelFactory
+import gr.padpad.marvellivedata.ui.activity.heroDetails.HeroDetailsActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -37,10 +40,14 @@ class DashboardActivity : BaseActivity() {
             // update UI
             heroes?.let {
                 dashboardRecyclerView.layoutManager = LinearLayoutManager(this)
-                dashboardRecyclerView.adapter = DashboardRecyclerViewAdapter(it.toMutableList()) { heroId ->
-                    viewModel.updateFavourite(heroId)
-                }
-            }
+                dashboardRecyclerView.adapter = DashboardRecyclerViewAdapter(it.toMutableList(),
+                        onFavouriteClicked = { heroId -> viewModel.updateFavourite(heroId) },
+                        onHeroClicked = { hero ->
+                            val intent = Intent(this, HeroDetailsActivity::class.java)
+                            intent.putExtra(BUNDLE.HERO_DETAILS, hero)
+                            startActivity(intent)
+                        })
+            } ?: run { emptyView.visibility = View.VISIBLE }
         })
 
         viewModel.getIsLoading().observe(this, Observer { value ->
