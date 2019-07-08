@@ -12,16 +12,14 @@ import gr.padpad.marvellivedata.commons.application.MarvelApplication
 import gr.padpad.marvellivedata.database.MarvelDatabase
 import gr.padpad.marvellivedata.mvp.repository.dashboard.DashboardRepository
 import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModel
-import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
-import gr.padpad.marvellivedata.ui.adapters.dashboard.DashboardRecyclerViewAdapter
 import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModelFactory
+import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
 import gr.padpad.marvellivedata.ui.activity.heroDetails.HeroDetailsActivity
+import gr.padpad.marvellivedata.ui.adapters.dashboard.DashboardRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class DashboardActivity : BaseActivity() {
-
-    private lateinit var viewModel: DashboardViewModel
+class DashboardActivity : BaseActivity<DashboardViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +34,12 @@ class DashboardActivity : BaseActivity() {
          * ViewModelProviders , keeping the ViewModel alive and paired with the scope:
          */
         viewModel = ViewModelProviders.of(this, dashboardViewModelFactory).get(DashboardViewModel::class.java)
-        viewModel.getHeroes().observe(this, Observer { heroes ->
+        viewModel?.getHeroes()?.observe(this, Observer { heroes ->
             // update UI
             heroes?.let {
                 dashboardRecyclerView.layoutManager = LinearLayoutManager(this)
                 dashboardRecyclerView.adapter = DashboardRecyclerViewAdapter(it.toMutableList(),
-                        onFavouriteClicked = { heroId -> viewModel.updateFavourite(heroId) },
+                        onFavouriteClicked = { heroId -> viewModel?.updateFavourite(heroId) },
                         onHeroClicked = { hero ->
                             val intent = Intent(this, HeroDetailsActivity::class.java)
                             intent.putExtra(BUNDLE.HERO_DETAILS, hero)
@@ -50,13 +48,13 @@ class DashboardActivity : BaseActivity() {
             } ?: run { emptyView.visibility = View.VISIBLE }
         })
 
-        viewModel.getIsLoading().observe(this, Observer { value ->
+        viewModel?.getIsLoading()?.observe(this, Observer { value ->
             value?.let { show ->
                 loadingView.visibility = if (show) View.VISIBLE else View.GONE
             }
         })
 
-        viewModel.shouldShowError().observe(this, Observer { value ->
+        viewModel?.shouldShowError()?.observe(this, Observer { value ->
             value?.let { show ->
                 emptyView.visibility = if (show) View.VISIBLE else View.GONE
             }
