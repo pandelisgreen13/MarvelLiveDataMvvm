@@ -1,5 +1,6 @@
 package gr.padpad.marvellivedata.ui.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import gr.padpad.marvellivedata.R
 import gr.padpad.marvellivedata.model.data.MarvelHeroesModel
-import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHero
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row_hero.*
 import kotlinx.android.synthetic.main.row_hero.view.*
@@ -21,8 +21,15 @@ class DashboardRecyclerViewAdapter(private val heroList: MutableList<MarvelHeroe
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val hero = heroList[position]
         holder.heroName.text = hero.name
-        holder.heroDescription.text = hero.description
+        holder.heroDescription.text = handleDescription(hero.description, holder.itemView.context)
         Picasso.get().load(hero.thumbnail).into(holder.heroImageView.heroImageView)
+    }
+
+    private fun handleDescription(description: String, context: Context): String {
+        return when {
+            description.isEmpty() -> context.resources.getString(R.string.dummy_description)
+            else -> description
+        }
     }
 
     override fun getItemCount(): Int {

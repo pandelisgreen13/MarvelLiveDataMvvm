@@ -2,4 +2,5 @@
     <string name="app_name">MarvelLiveData</string>
     <string name="no_data">Δεν βρέθηκαν αποτελέσματα</string>
     <string name="dashboard_toolbar_title">Marvel Heroes</string>
+    <string name="dummy_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus aliquet leo sit amet congue. Nulla lobortis velit vel magna lobortis congue. Phasellus sed massa quis turpis sagittis congue eu laoreet est. Integer molestie egestas dolor non congue. Proin blandit, erat eget mattis maximus, ante mauris hendrerit augue, ut egestas urna lacus facilisis nisi. </string>
 </resources>

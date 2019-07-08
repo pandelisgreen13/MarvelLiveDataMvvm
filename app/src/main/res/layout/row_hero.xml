@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/common_one_hundred_dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,14 +16,15 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/heroImageView"
             android:layout_width="@dimen/common_ninety_dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/common_eighty_dp"
             android:layout_gravity="top"
             android:layout_weight="0.3"
+            android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/common_ten_dp"
             android:layout_weight="1.7">
 
