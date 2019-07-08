@@ -2,7 +2,6 @@ package gr.padpad.marvellivedata.ui.activity.heroDetails
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import gr.padpad.marvellivedata.model.data.MarvelHeroesModel
 import gr.padpad.marvellivedata.mvp.repository.base.BaseViewModelFactory
 import gr.padpad.marvellivedata.mvp.repository.heroDetails.HeroDetailsRepository
 import gr.padpad.marvellivedata.mvp.viewModel.heroDetails.HeroDetailsViewModel
-import gr.padpad.marvellivedata.mvp.viewModel.heroDetails.HeroDetailsViewModelFactory
 import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
 import gr.padpad.marvellivedata.ui.adapters.heroDetails.HeroDetailsRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_hero_details.*
@@ -40,10 +38,9 @@ class HeroDetailsActivity : BaseActivity<HeroDetailsViewModel>() {
     }
 
     private fun initViewModel() {
-        val heroDetailsViewModelFactory = HeroDetailsViewModelFactory(
-                HeroDetailsRepository(MarvelApplication.get()?.marvelClient),
-                intent?.extras?.getParcelable<MarvelHeroesModel>(BUNDLE.HERO_DETAILS)
-        )
+        val heroDetailsViewModelFactory = BaseViewModelFactory {
+            HeroDetailsViewModel(HeroDetailsRepository(MarvelApplication.get()?.marvelClient), intent?.extras?.getParcelable<MarvelHeroesModel>(BUNDLE.HERO_DETAILS))
+        }
         viewModel = ViewModelProviders.of(this, heroDetailsViewModelFactory).get(HeroDetailsViewModel::class.java)
 
         viewModel?.getComics()?.observe(this, Observer { heroes ->

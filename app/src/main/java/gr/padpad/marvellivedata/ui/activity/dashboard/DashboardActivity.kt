@@ -10,9 +10,9 @@ import gr.padpad.marvellivedata.R
 import gr.padpad.marvellivedata.commons.BUNDLE
 import gr.padpad.marvellivedata.commons.application.MarvelApplication
 import gr.padpad.marvellivedata.database.MarvelDatabase
+import gr.padpad.marvellivedata.mvp.repository.base.BaseViewModelFactory
 import gr.padpad.marvellivedata.mvp.repository.dashboard.DashboardRepository
 import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModel
-import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModelFactory
 import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
 import gr.padpad.marvellivedata.ui.activity.heroDetails.HeroDetailsActivity
 import gr.padpad.marvellivedata.ui.adapters.dashboard.DashboardRecyclerViewAdapter
@@ -29,7 +29,7 @@ class DashboardActivity : BaseActivity<DashboardViewModel>() {
     }
 
     private fun initViewModel() {
-        val dashboardViewModelFactory = DashboardViewModelFactory(DashboardRepository(MarvelApplication.get()?.marvelClient, MarvelDatabase.get(this)))
+        val dashboardViewModelFactory = BaseViewModelFactory { DashboardViewModel(DashboardRepository(MarvelApplication.get()?.marvelClient, MarvelDatabase.get(this))) }
         /**
          * ViewModelProviders , keeping the ViewModel alive and paired with the scope:
          */
