@@ -39,6 +39,7 @@
     <dimen name="common_one_hundred_and_forty_dp">140dp</dimen>
     <dimen name="common_one_hundred_sixteen_dp">160dp</dimen>
     <dimen name="common_one_hundred_eighty_dp">180dp</dimen>
+    <dimen name="common_two_hundred_dp">200dp</dimen>
 
     <!-- Common Text Scale-independent Pixels -->
     <dimen name="common_text_twelve_sp">12sp</dimen>

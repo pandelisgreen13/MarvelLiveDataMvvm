@@ -22,11 +22,11 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/heroImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/common_two_hundred_dp"
+            android:layout_height="@dimen/common_two_hundred_dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/common_ten_dp"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
@@ -45,7 +45,6 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/common_text_sixteen_sp"
                 android:textStyle="bold"
-                app:autoSizeTextType="uniform"
                 tools:text="Teeeeest" />
 
             <View
@@ -61,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="3"
+                android:minLines="3"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/common_text_twelve_sp"
                 tools:text="Tegdgdfgtgeeeest" />

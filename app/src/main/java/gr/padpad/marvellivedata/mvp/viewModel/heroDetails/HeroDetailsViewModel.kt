@@ -30,7 +30,7 @@ class HeroDetailsViewModel(private val dashboardRepository: HeroDetailsRepositor
                 }
                 response?.let {
                     showError.value = false
-                    comics.value = it.marvelHeroes
+                    comics.value = it.marvelHeroes.toList()
                 } ?: run {
                     showError.value = true
                 }
