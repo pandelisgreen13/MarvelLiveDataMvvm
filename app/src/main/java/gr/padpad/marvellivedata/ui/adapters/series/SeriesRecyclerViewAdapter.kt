@@ -10,6 +10,8 @@ import gr.padpad.marvellivedata.R
 import gr.padpad.marvellivedata.model.response.marvel.series.MarvelSeries
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row_hero.*
+import kotlinx.android.synthetic.main.row_hero.heroImageView
+import kotlinx.android.synthetic.main.row_series.*
 
 class SeriesRecyclerViewAdapter(private val seriesList: MutableList<MarvelSeries>) : RecyclerView.Adapter<SeriesRecyclerViewAdapter.ItemViewHolder>() {
 
@@ -20,10 +22,10 @@ class SeriesRecyclerViewAdapter(private val seriesList: MutableList<MarvelSeries
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val series = seriesList[position]
 
-        holder.heroName.text = series.name
-        holder.heroDescription.text = handleDescription(series.description
+        holder.seriesName.text = series.title
+        holder.seriesDescription.text = handleDescription(series.description
                 ?: "", holder.itemView.context)
-        Picasso.get().load(series.getEventImage()).into(holder.heroImageView)
+        Picasso.get().load(series.getEventImage()).into(holder.seriesImageView)
     }
 
     private fun handleDescription(description: String, context: Context): String {
