@@ -3,6 +3,7 @@ package gr.padpad.marvellivedata.ui.activity.dashboard
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import gr.padpad.marvellivedata.mvp.repository.dashboard.DashboardRepository
 import gr.padpad.marvellivedata.mvp.viewModel.dashboard.DashboardViewModel
 import gr.padpad.marvellivedata.ui.activity.base.BaseActivity
 import gr.padpad.marvellivedata.ui.activity.heroDetails.HeroDetailsActivity
+import gr.padpad.marvellivedata.ui.activity.series.SeriesActivity
 import gr.padpad.marvellivedata.ui.adapters.dashboard.DashboardRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -68,5 +70,7 @@ class DashboardActivity : BaseActivity<DashboardViewModel>() {
     private fun initLayout() {
         toolbarTitleTextView.text = getString(R.string.dashboard_toolbar_title)
         backButtonImageView.visibility = View.INVISIBLE
+        closeButtonImageView.visibility = View.VISIBLE
+        closeButtonImageView.setOnClickListener { startActivity(Intent(this, SeriesActivity::class.java)) }
     }
 }

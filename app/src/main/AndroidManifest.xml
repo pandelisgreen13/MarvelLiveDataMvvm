@@ -15,10 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".ui.activity.series.SeriesActivity"/>
         <activity android:name=".ui.activity.heroDetails.HeroDetailsActivity" />
         <activity android:name=".ui.activity.dashboard.DashboardActivity" />
-
         <activity
             android:name=".ui.activity.splash.SplashActivity"
             android:theme="@style/LauncherTheme">

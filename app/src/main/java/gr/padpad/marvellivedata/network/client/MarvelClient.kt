@@ -5,6 +5,7 @@ import gr.padpad.marvellivedata.commons.Definitions
 import gr.padpad.marvellivedata.commons.DefinitionsApi
 import gr.padpad.marvellivedata.model.response.marvel.comics.MarvelComicsResponse
 import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHeroResponse
+import gr.padpad.marvellivedata.model.response.marvel.series.MarvelSeriesResponse
 import gr.padpad.marvellivedata.network.api.MarvelApi
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
@@ -83,6 +84,10 @@ class MarvelClient {
 
     fun getMarvelComicsAsync(heroId: Int): Deferred<MarvelComicsResponse> {
         return marvelApi.getMarvelComicsAsync(heroId)
+    }
+
+    fun getMarvelSeriesAsync(limit: Int, offset: Int): Deferred<MarvelSeriesResponse> {
+        return marvelApi.getMarvelSeries(limit,offset)
     }
 
 }
