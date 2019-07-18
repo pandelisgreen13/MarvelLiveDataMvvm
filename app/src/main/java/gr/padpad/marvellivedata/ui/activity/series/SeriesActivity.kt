@@ -33,7 +33,7 @@ class SeriesActivity : BaseActivity<SeriesViewModel>() {
         viewModel = ViewModelProviders.of(this, seriesViewModelFactory).get(SeriesViewModel::class.java)
         viewModel?.getSeries()?.observe(this, Observer { series ->
             series?.let {
-                seriesRecyclerView.layoutManager = GridLayoutManager(this, 2)
+                seriesRecyclerView.layoutManager = LinearLayoutManager(this)
                 seriesRecyclerView.adapter = SeriesRecyclerViewAdapter(it.toMutableList())
             } ?: run { emptyView.visibility = View.VISIBLE }
         })
