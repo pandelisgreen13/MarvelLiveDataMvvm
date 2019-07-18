@@ -24,7 +24,7 @@ class HeroDetailsViewModel(private val dashboardRepository: HeroDetailsRepositor
         comics = MutableLiveData()
         uiScope.launch {
             try {
-                isLoading.value = true
+                showLoading.value = true
                 val response = withContext(bgDispatcher) {
                     dashboardRepository?.fetchComics(hero?.id ?: 0)
                 }
@@ -38,7 +38,7 @@ class HeroDetailsViewModel(private val dashboardRepository: HeroDetailsRepositor
                 Timber.e(e.toString())
                 showError.value = true
             } finally {
-                isLoading.value = false
+                showLoading.value = false
             }
         }
     }

@@ -3,8 +3,6 @@ package gr.padpad.marvellivedata.mvp.viewModel.dashboard
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import gr.padpad.marvellivedata.model.data.MarvelHeroesModel
-import gr.padpad.marvellivedata.model.response.marvel.hero.MarvelHero
-import gr.padpad.marvellivedata.network.client.MarvelClient
 import gr.padpad.marvellivedata.mvp.repository.dashboard.DashboardRepository
 import gr.padpad.marvellivedata.mvp.viewModel.base.BaseViewModel
 import kotlinx.coroutines.launch
@@ -26,7 +24,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository?) 
         heroes = MutableLiveData()
         uiScope.launch {
             try {
-                isLoading.value = true
+                showLoading.value = true
                 val response = withContext(bgDispatcher) { dashboardRepository?.fetchHeroes() }
                 response?.let {
                     showError.value = false
@@ -38,21 +36,21 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository?) 
                 Timber.e(e.toString())
                 showError.value = true
             } finally {
-                isLoading.value = false
+                showLoading.value = false
             }
         }
     }
 
     fun updateFavourite(heroId: Int) {
         uiScope.launch {
-            isLoading.value = true
+            showLoading.value = true
             try {
                 withContext(bgDispatcher) { dashboardRepository?.updateFavourite(heroId) }
             } catch (e: Exception) {
                 Timber.e(e.toString())
                 showError.value = true
             } finally {
-                isLoading.value = false
+                showLoading.value = false
             }
         }
     }

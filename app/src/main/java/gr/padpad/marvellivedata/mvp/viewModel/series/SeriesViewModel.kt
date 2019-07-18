@@ -24,7 +24,7 @@ class SeriesViewModel(private val seriesRepository: SeriesRepository?) : BaseVie
         series = MutableLiveData()
         uiScope.launch {
             try {
-                isLoading.value = true
+                showLoading.value = true
                 val response = withContext(bgDispatcher) { seriesRepository?.fetchSeries() }
                 response?.let {
                     showError.value = false
@@ -36,7 +36,7 @@ class SeriesViewModel(private val seriesRepository: SeriesRepository?) : BaseVie
                 Timber.e(e.toString())
                 showError.value = true
             } finally {
-                isLoading.value = false
+                showLoading.value = false
             }
         }
     }

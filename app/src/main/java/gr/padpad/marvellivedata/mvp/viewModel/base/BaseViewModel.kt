@@ -11,7 +11,7 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
     private val viewModelJob = SupervisorJob()
     protected val bgDispatcher: CoroutineDispatcher = Dispatchers.IO
     protected val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    protected lateinit var isLoading: MutableLiveData<Boolean>
+    protected lateinit var showLoading: MutableLiveData<Boolean>
     protected lateinit var showError: MutableLiveData<Boolean>
 
     /**
@@ -32,10 +32,10 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
     }
 
     fun getIsLoading(): LiveData<Boolean> {
-        if (!::isLoading.isInitialized) {
-            isLoading = MutableLiveData()
+        if (!::showLoading.isInitialized) {
+            showLoading = MutableLiveData()
         }
-        return isLoading
+        return showLoading
     }
 
     /**
