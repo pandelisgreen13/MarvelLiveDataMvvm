@@ -23,6 +23,14 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + viewModelJob
 
+    /**
+     * Cancel all coroutines when the ViewModel is cleared
+     */
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 
     fun shouldShowError(): LiveData<Boolean> {
         if (!::showError.isInitialized) {
@@ -36,14 +44,5 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
             showLoading = MutableLiveData()
         }
         return showLoading
-    }
-
-    /**
-     * Cancel all coroutines when the ViewModel is cleared
-     */
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
     }
 }
