@@ -35,7 +35,7 @@ class DashboardActivity : BaseActivity<DashboardViewModel>() {
             DashboardViewModel(DashboardRepository(MarvelApplication.get()?.marvelClient, MarvelDatabase.get(this)))
         }
         /**
-         * ViewModelProviders , keeping the ViewModel alive and paired with the scope:
+         * ViewModelProviders , keeping the ViewModel alive and paired with the scope
          */
         viewModel = ViewModelProviders.of(this, dashboardViewModelFactory).get(DashboardViewModel::class.java)
         viewModel?.getHeroes()?.observe(this, Observer { heroes ->

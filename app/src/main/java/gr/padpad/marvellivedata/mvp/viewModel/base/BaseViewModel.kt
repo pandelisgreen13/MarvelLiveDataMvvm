@@ -18,6 +18,9 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
      * This is the job for all coroutines started by this ViewModel.
      *
      * Cancelling this job will cancel all coroutines started by this ViewModel.
+     *
+     * This would ensure that our coroutines do not get canceled even
+     * when the screen rotates and our activity is recreated
      */
 
     override val coroutineContext: CoroutineContext
