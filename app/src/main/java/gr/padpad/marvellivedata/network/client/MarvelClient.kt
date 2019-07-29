@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -74,7 +75,7 @@ class MarvelClient {
         } catch (e1: NoSuchAlgorithmException) {
             e1.printStackTrace()
         }
-
+        Timber.d("hash -> $encryptedString")
         return encryptedString ?: ""
     }
 

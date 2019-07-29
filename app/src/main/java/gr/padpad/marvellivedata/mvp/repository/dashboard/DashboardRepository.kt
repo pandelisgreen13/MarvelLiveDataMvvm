@@ -10,9 +10,9 @@ import timber.log.Timber
 
 class DashboardRepository(private val marvelClient: MarvelClient?, private val marvelDatabase: MarvelDatabase) : BaseRepository() {
 
-    suspend fun fetchHeroes(): MarvelListModel? {
+    suspend fun fetchHeroes(offset: Int, limit: Int): MarvelListModel? {
         val response = try {
-            marvelClient?.getMarvelHeroesAsync(20, 0)?.await()
+            marvelClient?.getMarvelHeroesAsync(limit, offset)?.await()
         } catch (e: Exception) {
             return null
         }

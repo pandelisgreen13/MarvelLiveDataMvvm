@@ -11,8 +11,8 @@
         android:id="@+id/toolbarLayout"
         layout="@layout/layout_toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dashboardRecyclerView"
+    <include
+        layout="@layout/layout_pagination_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbarLayout"

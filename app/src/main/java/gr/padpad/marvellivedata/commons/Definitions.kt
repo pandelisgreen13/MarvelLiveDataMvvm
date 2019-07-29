@@ -8,6 +8,7 @@ object Definitions {
     const val PARAM_OFFSET                                                              = "offset"
     const val PARAM_LIMIT                                                               = "limit"
     const val PARAM_CHARACTER_ID                                                        = "characterId"
+    const val PAGINATION_SIZE                                                            = 6
 }
 
 object BUNDLE{

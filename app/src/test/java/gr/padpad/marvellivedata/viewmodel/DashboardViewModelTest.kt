@@ -47,12 +47,12 @@ class DashboardViewModelTest {
 
     @Test
     fun loadTeamsShouldShowAndHideLoading() = runBlocking {
-        `when`(repo.fetchHeroes()).thenReturn(marveList)
+        `when`(repo.fetchHeroes(offset, limit)).thenReturn(marveList)
 
         val isLoading = isLoadingLiveData.value
         isLoading?.let { assertTrue(it) }
         viewModel.getHeroes()
-        verify(repo).fetchHeroes()
+        verify(repo).fetchHeroes(offset, limit)
         isLoading?.let { assertFalse(it) }
         return@runBlocking
     }
